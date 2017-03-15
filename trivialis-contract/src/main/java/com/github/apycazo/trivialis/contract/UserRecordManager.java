@@ -7,23 +7,25 @@ import java.util.List;
 
 public interface UserRecordManager
 {
-    @GetMapping("users")
+    String basePath = "users";
+
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = basePath, method = RequestMethod.GET)
     List<UserRecord> getAllRecords();
 
-    @GetMapping("users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    UserRecord findRecordById(@PathVariable Integer id);
+    @RequestMapping(value = basePath + "/{id}", method = RequestMethod.GET)
+    UserRecord findRecordById(@PathVariable(name = "id") Integer id);
 
-    @DeleteMapping("users")
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = basePath, method = RequestMethod.DELETE)
     void deleteRecord(@RequestBody UserRecord record);
 
-    @PostMapping("users")
     @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = basePath, method = RequestMethod.POST)
     UserRecord saveRecord(@RequestBody UserRecord record);
 
-    @GetMapping("users/count")
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = basePath + "/count", method = RequestMethod.GET)
     Integer countRecords();
 }

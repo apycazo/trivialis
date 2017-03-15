@@ -7,6 +7,8 @@
     <modules>
         <module>trivialis-contract</module>
         <module>trivialis-provider</module>
+        <module>trivialis-client</module>
+        <module>trivialis-shared</module>
     </modules>
 
     <parent>
@@ -38,7 +40,39 @@
                 <artifactId>trivialis-contract</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.apycazo</groupId>
+                <artifactId>trivialis-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.apycazo</groupId>
+                <artifactId>trivialis-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.apycazo</groupId>
+                <artifactId>trivialis-shared</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <!-- There are not tests, but kept this as reference -->
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Rest assured for tests -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>3.0.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

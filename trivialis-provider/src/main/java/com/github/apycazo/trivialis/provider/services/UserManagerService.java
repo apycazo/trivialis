@@ -84,7 +84,7 @@ public class UserManagerService implements UserRecordManager
     }
 
     @Override
-    public UserRecord findRecordById(@PathVariable Integer id)
+    public UserRecord findRecordById(@PathVariable(name = "id") Integer id)
     {
         Optional<UserRecord> result = records.stream().filter(r -> r.getId().equals(id)).findAny();
         if (result.isPresent()) {

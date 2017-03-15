@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>trivialis-service</artifactId>
+    <artifactId>trivialis-client</artifactId>
 
     <dependencies>
         <dependency>
@@ -27,6 +27,14 @@
         <dependency>
             <groupId>com.github.apycazo</groupId>
             <artifactId>trivialis-contract</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.apycazo</groupId>
+            <artifactId>trivialis-shared</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -59,5 +67,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

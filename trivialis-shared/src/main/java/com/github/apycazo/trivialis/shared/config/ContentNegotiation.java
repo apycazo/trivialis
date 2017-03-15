@@ -1,16 +1,19 @@
-package com.github.apycazo.trivialis.provider.config;
+package com.github.apycazo.trivialis.shared.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+@Slf4j
 @Configuration
 public class ContentNegotiation extends WebMvcConfigurerAdapter
 {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer config)
     {
+        log.info("Setting up custom content negotiation");
         config
                 // path extensions will always be used when present
                 .favorPathExtension(true)
