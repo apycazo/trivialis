@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>trivialis-service</artifactId>
+    <artifactId>trivialis-provider</artifactId>
 
     <dependencies>
         <dependency>
