@@ -1,7 +1,7 @@
 ### ==========================================================================
 ### Docker image for the trivialis provider to run:
 ### $ mvn clean package && docker build -t trivialis/client .
-### $ docker run -d -p 9090:9090 --name trivialis-client trivialis/client
+### $ docker run -d -p 7003:8080 --name trivialis-client trivialis/client
 ### ==========================================================================
 
 # Use Centos as base layer
@@ -11,12 +11,20 @@ RUN yum -y upgrade
 # Install openjdk
 RUN yum -y install java-1.8.0-openjdk
 # Open port
-EXPOSE 9090
+EXPOSE 8080
 # Mount tmp volume on host
 VOLUME /tmp
+# Use '/app' directory instead of root '/' as base path
+WORKDIR /app
 # Add jar file
-ADD /target/trivialis-client-1.0-SNAPSHOT.jar trivialis-client.jar
+ADD /target/trivialis-client-*.jar trivialis-client.jar
 # Update 'last modified' field
-RUN sh -c 'touch /trivialis-client.jar'
+RUN sh -c 'touch trivialis-client.jar'
+# Create the app config file
+RUN printf "\
+server.port: 8080\n\
+services.trivialis.provider: http://172.72.100.1:8080\n\
+security.basic.enabled: false\n\
+management.security.enabled: false\n" > application.yml
 # On start command
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/trivialis-client.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","trivialis-client.jar"]
