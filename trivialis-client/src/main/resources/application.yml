@@ -1,2 +1,7 @@
 server.port: 9090
 services.trivialis.provider: http://127.0.0.1:8080
+
+logging:
+    file: logs/trivialis-client.log
+    level:
+        com.github.apycazo.trivialis.client: INFO

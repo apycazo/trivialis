@@ -21,10 +21,13 @@ ADD /target/trivialis-client-*.jar trivialis-client.jar
 # Update 'last modified' field
 RUN sh -c 'touch trivialis-client.jar'
 # Create the app config file
+ARG provider_ip=127.0.0.1
 RUN printf "\
 server.port: 8080\n\
-services.trivialis.provider: http://172.72.100.1:8080\n\
+services.trivialis.provider: http://$provider_ip:8080\n\
 security.basic.enabled: false\n\
+logging.file: logs/trivialis-client.log\n\
+logging.level.com.github.apycazo.trivialis.client: INFO\n\
 management.security.enabled: false\n" > application.yml
 # On start command
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","trivialis-client.jar"]

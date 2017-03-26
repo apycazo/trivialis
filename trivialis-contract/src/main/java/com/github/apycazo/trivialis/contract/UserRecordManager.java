@@ -28,4 +28,8 @@ public interface UserRecordManager
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = basePath + "/count", method = RequestMethod.GET)
     Integer countRecords();
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = basePath + "/log", method = RequestMethod.POST)
+    void logMessage(@RequestBody String message);
 }

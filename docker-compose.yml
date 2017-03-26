@@ -1,0 +1,20 @@
+# Full docker test:
+# docker-compose up -d --build
+# curl http://127.0.0.1:9101/users should be the same as curl http://127.0.0.1:9102/process
+
+version: '2'
+
+services:
+    provider:
+        build: ./trivialis-provider
+        ports:
+            - 9101:8080
+    client:
+        build:
+            context: ./trivialis-client
+            args:
+                - provider_ip=provider
+        ports:
+            - 9102:8080
+        links:
+            - provider

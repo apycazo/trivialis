@@ -24,6 +24,8 @@ RUN sh -c 'touch /app/trivialis-provider.jar'
 RUN printf "\
 server.port: 8080\n\
 security.basic.enabled: false\n\
+logging.file: logs/trivialis-provider.log\n\
+logging.level.com.github.apycazo.trivialis.provider: INFO\n\
 management.security.enabled: false\n" > application.yml
 # On start command
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","trivialis-provider.jar"]

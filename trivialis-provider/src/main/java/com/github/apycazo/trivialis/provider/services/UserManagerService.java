@@ -119,5 +119,13 @@ public class UserManagerService implements UserRecordManager
         return records.size();
     }
 
-
+    @Override
+    public void logMessage(@RequestBody String message)
+    {
+        log.error(message);
+        log.warn(message);
+        log.info(message);
+        log.debug(message);
+        log.trace(message);
+    }
 }
