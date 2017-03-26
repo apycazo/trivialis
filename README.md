@@ -2,7 +2,7 @@
 A simple spring boot rest service for testing APIs. The intention behind this is to have
 a sample multi-module project to detail some source organization options.
 
-For this, here I have used the following submodules:
+For this, I have used the following modules:
 
 * **trivialis-shared**: A spring factory library, can be auto-configured on include, and provided some features to
 whatever module includes it.
@@ -42,7 +42,28 @@ $ curl http://127.0.0.1:9102/process
 
 ## Notes
 
-I know that using 'centos' image as base for docker is not very effective, and that the same thing
-can be achieved through 'alpine' images, but I need to use a centos image for others tests based on 
-this repo (and that I can't publish here). If this is too heavy for you, you can use 'openjdk-8-jdk-alpine'
+I know that using 'centos' image as base for docker is not very effective, a tad heavy, and the same result
+can be achieved using 'alpine' images, but I need to use a centos image for other tests based on 
+this repo (which I can't publish here). If this is too heavy for you, you can use 'openjdk-8-jdk-alpine'
 (just remember to update the docker files accordingly).
+
+## TODO
+
+There is no need to create an `application.yml` config using docker, a spring profile for docker can be used instead like:
+
+```
+spring.application.name: trivialis-client
+server.port: 9090
+---
+spring.profiles: docker
+server.port: 8080
+logging:
+    file: logs/trivialis-client.log
+    level:
+        com.github.apycazo.trivialis.client: INFO
+```
+
+And in the docker file use an entry point like:
+```
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","spring.profiles.active=docker,"-jar","trivialis-client.jar"]
+```

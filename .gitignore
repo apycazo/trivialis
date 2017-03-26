@@ -3,6 +3,8 @@
 target
 *.iml
 .idea
+logs
+*.log
 
 *.class
 
