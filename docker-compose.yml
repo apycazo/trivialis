@@ -1,5 +1,5 @@
 # Full docker test:
-# docker-compose up -d --build
+# $ docker-compose up -d --build
 # curl http://127.0.0.1:9101/users should be the same as curl http://127.0.0.1:9102/process
 
 version: '2'
