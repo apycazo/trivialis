@@ -47,6 +47,10 @@ can be achieved using 'alpine' images, but I need to use a centos image for othe
 this repo (which I can't publish here). If this is too heavy for you, you can use 'openjdk-8-jdk-alpine'
 (just remember to update the docker files accordingly).
 
+## Notes
+
+Using [semantic versioning](http://semver.org/) for the version values.
+
 ## TODO
 
 There is no need to create an `application.yml` config using docker, a spring profile for docker can be used instead like:
@@ -67,3 +71,4 @@ And in the docker file use an entry point like:
 ```
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","spring.profiles.active=docker,"-jar","trivialis-client.jar"]
 ```
+

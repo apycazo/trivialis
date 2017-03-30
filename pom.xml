@@ -59,7 +59,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- There are not tests, but kept this as reference -->
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,6 +71,11 @@
             <artifactId>rest-assured</artifactId>
             <version>3.0.1</version>
             <scope>test</scope>
+        </dependency>
+        <!-- Process configuration properties -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
     </dependencies>
 
